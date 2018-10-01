@@ -43,6 +43,11 @@ jobs:
           environment:
 
             TERM: dumb
+      - run:
+          name: accept licenses
+          command: cp -r licenses/ $ANDROID_HOME/licenses
+          environment:
+            TERM: dumb
 
       - run:
 
@@ -91,13 +96,6 @@ jobs:
           environment:
 
             TERM: dumb
-
-      - run:
-
-          name: accept licenses
-
-          command: (while sleep 3; do echo "y"; done) | sdkmanager --licenses
-
  
       - run:
 
