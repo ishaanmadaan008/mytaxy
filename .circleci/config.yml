@@ -44,7 +44,15 @@ jobs:
 
             TERM: dumb
 
+      - run:
 
+          name: accept licenses
+
+          command: sdkmanager --licences
+
+          environment:
+
+            TERM: dumb
 
       #- run:
 
