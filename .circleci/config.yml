@@ -48,7 +48,7 @@ jobs:
 
           name: accept licenses
 
-          command: yes | sdkmanager --licenses
+          command: yes |yes |yes |yes | yes | sdkmanager --licenses
 
           environment:
 
