@@ -16,6 +16,9 @@ jobs:
           name: ls
           command: ls
       - run:
+          name: cd
+          command: cd AndroidDemo
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
