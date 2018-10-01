@@ -48,7 +48,7 @@ jobs:
 
           name: accept licenses
 
-          command: sdkmanager --licenses
+          command: yes | sdkmanager --licenses
 
           environment:
 
@@ -115,22 +115,9 @@ jobs:
             TERM: dumb
 
 
-
       - run:
 
-          name: Unit testing
-
-          command: ./gradlew test
-
-          environment:
-
-            TERM: dumb
-
-
-
-      - run:
-
-          name: Express testing
+          name: Expresso testing
 
           command: ./gradlew connectedAndroidTest
 
