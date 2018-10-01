@@ -48,7 +48,7 @@ jobs:
 
           name: accept licenses
 
-          command: cp -r licenses/. $ANDROID_HOME/licenses
+          command: (while sleep 3; do echo "y"; done) | sdkmanager --licenses
 
           environment:
 
