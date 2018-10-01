@@ -10,6 +10,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: pwd
+          command: pwd
+      - run:
+          name: ls
+          command: ls
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
