@@ -58,21 +58,25 @@ public class ExpressoTest {
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
 
-
-
-    public static void allwCurrentPermission(UiDevice device) throws UiObjectNotFoundException {
-        UiObject allowButton = device.findObject(new UiSelector().text("Allow"));
-        try {
-            allowButton.click();
-        }
-        catch (UiObjectNotFoundException e) {
+    private void allowPermissionsIfNeeded()  {
+        if (Build.VERSION.SDK_INT >= 23) {
+            Instrumentation instr = InstrumentationRegistry.getInstrumentation();
+            UiDevice mDevice = UiDevice.getInstance(instr);
+            UiObject allowPermissions = mDevice.findObject(new UiSelector().text("ALLOW"));
+            if (allowPermissions.exists()) {
+                try {
+                    allowPermissions.click();
+                } catch (UiObjectNotFoundException e) {
+                    Log.e( "There is no permissions dialog to interact with ",e.getMessage());
+                }
+            }
         }
     }
 
     @Before
     public void registerIdlingResource() throws UiObjectNotFoundException {
         IdlingRegistry.getInstance().register(EspressoIdlingResource.getIdlingResource());
-        allwCurrentPermission(UiDevice.getInstance(InstrumentationRegistry.getInstrumentation()));
+        allowPermissionsIfNeeded();
         try {
             Espresso.onView(withId(R.id.btn_login))
                     .check(matches(isDisplayed()));
