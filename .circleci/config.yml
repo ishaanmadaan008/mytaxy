@@ -46,28 +46,6 @@ jobs:
 
       - run:
 
-          name: accept licenses
-
-          command: (while sleep 3; do echo "y"; done) | sdkmanager --licenses
-
-          environment:
-
-            TERM: dumb
-
-      #- run:
-
-      #    name: Install custom system image
-
-      #    command: sdkmanager "system-images;android-23;google_apis;armeabi-v7a"
-
-      #    environment:
-
-      #      TERM: dumb
-
-
-
-      - run:
-
           name: Create avd
 
        #   command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-23;google_apis;armeabi-v7a"
@@ -114,7 +92,13 @@ jobs:
 
             TERM: dumb
 
+      - run:
 
+          name: accept licenses
+
+          command: (while sleep 3; do echo "y"; done) | sdkmanager --licenses
+
+ 
       - run:
 
           name: Expresso testing
