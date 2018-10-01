@@ -45,7 +45,7 @@ jobs:
             TERM: dumb
       - run:
           name: accept licenses
-          command: cp -r licenses/ $ANDROID_HOME/licenses
+          command: cp -r ~/MobileAppAutomationTest/AndroidDemo/licenses/ $ANDROID_HOME/licenses
           environment:
             TERM: dumb
 
