@@ -25,6 +25,9 @@ jobs:
           name: ls
           command: ls
       - run:
+          name: gradle wrapper
+          command: gradle wrapper
+      - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
       - save_cache:
