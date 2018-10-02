@@ -53,8 +53,8 @@ jobs:
             TERM: dumb
   
       - run:
-          name: cd $ANDROID_HOME/licenses
-          command: cd $ANDROID_HOME/licenses
+          name: path ANDROID_SDK_ROOT
+          command: export ANDROID_SDK_ROOT=$ANDROID_HOME
           environment:
             TERM: dumb
 
