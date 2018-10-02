@@ -1,6 +1,5 @@
 version: 2
-jobs:
-  build:  
+jobs:  
      general:
        artifacts:
          - "app/build/reports/androidTests/connected"
