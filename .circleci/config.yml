@@ -20,8 +20,6 @@ jobs:
 
     steps:
 
-
-
       - run:
 
           name: Lists installed targets
@@ -61,7 +59,7 @@ jobs:
           environment: 
           
             TERM: dumb
-       - run:
+      - run:
 
           name: Ls
 
@@ -87,6 +85,31 @@ jobs:
 
           environment:
 
+            TERM: dumb
+      - run:
+          name: ls
+          command: ls
+          environment:
+            TERM: dumb
+      - run:
+          name: pwd
+          command: pwd
+          environment:
+            TERM: dumb
+      - run:
+          name: cd $ANDROID_HOME/licenses
+          command: cd $ANDROID_HOME/licenses
+          environment:
+            TERM: dumb
+      - run:
+          name: pwd
+          command: pwd
+          environment:
+            TERM: dumb
+      - run:
+          name: ls
+          command: ls
+          environment:
             TERM: dumb
       - run:
           name: accept licenses
@@ -140,6 +163,12 @@ jobs:
 
           environment:
 
+            TERM: dumb
+
+      - run:
+          name: ls
+          command: ls
+          environment:
             TERM: dumb
  
       - run:
