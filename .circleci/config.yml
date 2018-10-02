@@ -41,74 +41,20 @@ jobs:
           environment:
 
             TERM: dumb
+            
       - run:
 
-          name: Ls
+          name: List available targets and other sdk modules
 
-          command: ls
+          command: sdkmanager "system-images;android-24;google_apis_playstore;x86"
 
           environment:
 
             TERM: dumb
-      - run:
-
-          name: pwd
-
-          command: pwd
-      
-          environment: 
-          
-            TERM: dumb
-      - run:
-
-          name: Ls
-
-          command: ls
-      
-          environment: 
-          
-            TERM: dumb
-      - run:
-      
-          name: cd
-
-          command: cd $ANDROID_HOME/licenses
-
-          environment:
-
-            TERM: dumb
-      - run:
-
-          name: cd
-
-          command: cd $ANDROID_HOME/licenses
-
-          environment:
-
-            TERM: dumb
-      - run:
-          name: ls
-          command: ls
-          environment:
-            TERM: dumb
-      - run:
-          name: pwd
-          command: pwd
-          environment:
-            TERM: dumb
+  
       - run:
           name: cd $ANDROID_HOME/licenses
           command: cd $ANDROID_HOME/licenses
-          environment:
-            TERM: dumb
-      - run:
-          name: pwd
-          command: pwd
-          environment:
-            TERM: dumb
-      - run:
-          name: ls
-          command: ls
           environment:
             TERM: dumb
 
@@ -149,19 +95,6 @@ jobs:
             command: sleep 360
             environment:
               TERM: dumb
-
-      - run:
-          name: ls
-          command: ls
-          environment:
-            TERM: dumb
-
-      - run:
-          name: pwd
-          command: pwd
-          environment:
-            TERM: dumb
-
      
       - run:
           name: accept licenses
