@@ -146,7 +146,7 @@ jobs:
 
       - run:
             name: Wait emulator
-            command: ./android-wait-for-boot.sh
+            command: sleep 360
             environment:
               TERM: dumb
 
