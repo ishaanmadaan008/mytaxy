@@ -10,7 +10,7 @@ jobs:
 
       # specific environment version to avoid incompatible updates
 
-      - image: thyrlian/android-sdk
+      - image: bitriseio/docker-android:v2017_09_09-06_45-b744
 
 
 
@@ -76,7 +76,7 @@ jobs:
 
           name: Start emulator
 
-          command: emulator -avd testEmulator -no-audio -no-window
+          command: /opt/android-sdk-linux/emulator/emulator -avd testEmulator -no-audio -no-window
 
           background: true
 
