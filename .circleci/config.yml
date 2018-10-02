@@ -183,16 +183,6 @@ jobs:
           command: ls $ANDROID_HOME/licenses
           environment:
             TERM: dumb
-      - run:
-          name: ls $ANDROID_HOME/licenses 
-          command: yes | sdkmanager --licenses
-          environment:
-            TERM: dumb
-      - run:
-          name: ls $ANDROID_HOME/licenses 
-          command: ls $ANDROID_HOME/licenses
-          environment:
-            TERM: dumb
  
       - run:
 
