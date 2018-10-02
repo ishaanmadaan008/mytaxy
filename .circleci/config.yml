@@ -1,208 +1,151 @@
+--- 
+jobs: 
+  build: 
+    docker: 
+      - 
+        image: "bitriseio/docker-android:v2017_09_09-06_45-b744"
+    steps: 
+      - 
+        run: 
+          command: "android list target"
+          environment: 
+            TERM: dumb
+          name: "Lists installed targets"
+      - 
+        run: 
+          command: "sdkmanager --list --include_obsolete --verbose"
+          environment: 
+            TERM: dumb
+          name: "List available targets and other sdk modules"
+      - 
+        run: 
+          command: ls
+          environment: 
+            TERM: dumb
+          name: Ls
+      - 
+        run: 
+          command: pwd
+          environment: 
+            TERM: dumb
+          name: pwd
+      - 
+        run: 
+          command: ls
+          environment: 
+            TERM: dumb
+          name: Ls
+      - 
+        run: 
+          command: "cd $ANDROID_HOME/licenses"
+          environment: 
+            TERM: dumb
+          name: cd
+      - 
+        run: 
+          command: "cd $ANDROID_HOME/licenses"
+          environment: 
+            TERM: dumb
+          name: cd
+      - 
+        run: 
+          command: ls
+          environment: 
+            TERM: dumb
+          name: ls
+      - 
+        run: 
+          command: pwd
+          environment: 
+            TERM: dumb
+          name: pwd
+      - 
+        run: 
+          command: "cd $ANDROID_HOME/licenses"
+          environment: 
+            TERM: dumb
+          name: "cd $ANDROID_HOME/licenses"
+      - 
+        run: 
+          command: pwd
+          environment: 
+            TERM: dumb
+          name: pwd
+      - 
+        run: 
+          command: ls
+          environment: 
+            TERM: dumb
+          name: ls
+      - 
+        run: 
+          command: "echo no | avdmanager create avd -n testEmulator -k \"system-images;android-24;default;armeabi-v7a\""
+          environment: 
+            TERM: dumb
+          name: "Create avd"
+      - 
+        run: 
+          background: true
+          command: "/opt/android-sdk-linux/emulator/emulator -avd testEmulator -no-audio -no-window"
+          environment: 
+            TERM: dumb
+          name: "Start emulator"
+      - checkout
+      - 
+        run: 
+          command: ./android-wait-for-boot.sh
+          environment: 
+            TERM: dumb
+          name: "Wait emulator"
+      - 
+        run: 
+          command: "adb shell input keyevent 82"
+          environment: 
+            TERM: dumb
+          name: "Remove lock screen"
+      - 
+        run: 
+          command: ls
+          environment: 
+            TERM: dumb
+          name: ls
+      - 
+        run: 
+          command: pwd
+          environment: 
+            TERM: dumb
+          name: pwd
+      - 
+        run: 
+          command: "yes | sdkmanager --licenses"
+          environment: 
+            TERM: dumb
+          name: "ls $ANDROID_HOME/licenses"
+      - 
+        command: "cp -r ~/MobileAppAutomationTest/AndroidDemo/licenses/. $ANDROID_HOME/licenses/"
+        environment: 
+          TERM: dumb
+        name: "accept licenses"
+        run: ~
+      - 
+        run: 
+          command: "ls $ANDROID_HOME/licenses"
+          environment: 
+            TERM: dumb
+          name: "ls $ANDROID_HOME/licenses"
+      - 
+        run: 
+          command: "./gradlew connectedAndroidTest"
+          environment: 
+            TERM: dumb
+          name: "Expresso testing"
+      - 
+        store_artifacts: 
+          destination: reports
+          path: app/build/reports
+      - 
+        store_test_results: 
+          path: app/build/outputs
+    working_directory: ~/MobileAppAutomationTest/AndroidDemo/
 version: 2
 
-
-
-jobs:
-
-  build:
-
-    docker:
-
-      # specific environment version to avoid incompatible updates
-
-      - image: bitriseio/docker-android:v2017_09_09-06_45-b744
-
-
-
-    working_directory: ~/MobileAppAutomationTest/AndroidDemo/
-
-
-
-    steps:
-
-      - run:
-
-          name: Lists installed targets
-
-          command: android list target
-
-          environment:
-
-            TERM: dumb
-
-
-
-      - run:
-
-          name: List available targets and other sdk modules
-
-          command: sdkmanager --list --include_obsolete --verbose
-
-          environment:
-
-            TERM: dumb
-      - run:
-
-          name: Ls
-
-          command: ls
-
-          environment:
-
-            TERM: dumb
-      - run:
-
-          name: pwd
-
-          command: pwd
-      
-          environment: 
-          
-            TERM: dumb
-      - run:
-
-          name: Ls
-
-          command: ls
-      
-          environment: 
-          
-            TERM: dumb
-      - run:
-      
-          name: cd
-
-          command: cd $ANDROID_HOME/licenses
-
-          environment:
-
-            TERM: dumb
-      - run:
-
-          name: cd
-
-          command: cd $ANDROID_HOME/licenses
-
-          environment:
-
-            TERM: dumb
-      - run:
-          name: ls
-          command: ls
-          environment:
-            TERM: dumb
-      - run:
-          name: pwd
-          command: pwd
-          environment:
-            TERM: dumb
-      - run:
-          name: cd $ANDROID_HOME/licenses
-          command: cd $ANDROID_HOME/licenses
-          environment:
-            TERM: dumb
-      - run:
-          name: pwd
-          command: pwd
-          environment:
-            TERM: dumb
-      - run:
-          name: ls
-          command: ls
-          environment:
-            TERM: dumb
-
-      - run:
-
-          name: Create avd
-
-       #   command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-23;google_apis;armeabi-v7a"
-
-          command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-24;default;armeabi-v7a"
-
-          environment:
-
-            TERM: dumb
-
-
-
-      - run:
-
-          name: Start emulator
-
-          command: /opt/android-sdk-linux/emulator/emulator -avd testEmulator -no-audio -no-window
-
-          background: true
-
-          environment:
-
-            TERM: dumb
-
-
-
-      - checkout
-
-
-
-      - run:
-            name: Wait emulator
-            command: ./android-wait-for-boot.sh
-            environment:
-              TERM: dumb
-
-      - run:
-
-          name: Remove lock screen
-
-          command: adb shell input keyevent 82
-
-          environment:
-
-            TERM: dumb
-
-      - run:
-          name: ls
-          command: ls
-          environment:
-            TERM: dumb
-
-      - run:
-          name: pwd
-          command: pwd
-          environment:
-            TERM: dumb
-
-      - run:
-          name: ls $ANDROID_HOME/licenses 
-          command: yes | sdkmanager --licenses
-          environment:
-            TERM: dumb
-      - run:
-        name: accept licenses
-        command: cp -r ~/MobileAppAutomationTest/AndroidDemo/licenses/. $ANDROID_HOME/licenses/
-        environment:
-          TERM: dumb
-      - run:
-          name: ls $ANDROID_HOME/licenses 
-          command: ls $ANDROID_HOME/licenses
-          environment:
-            TERM: dumb
- 
-      - run:
-
-          name: Expresso testing
-
-          command: ./gradlew connectedAndroidTest
-
-          environment:
-
-            TERM: dumb
-      - store_artifacts:
-
-          path: app/build/reports
-          
-          destination: reports
-      
-      - store_test_results:
-
-          path: app/build/outputs
