@@ -116,9 +116,9 @@ jobs:
 
           name: Create avd
 
-       #   command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-23;google_apis;armeabi-v7a"
+          command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-23;google_apis;armeabi-v7a"
 
-          command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-25;google_apis;default;armeabi-v7a"
+       #   command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-25;google_apis;default;armeabi-v7a"
 
           environment:
 
