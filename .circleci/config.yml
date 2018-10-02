@@ -96,7 +96,7 @@ jobs:
 
       - run:
             name: Wait emulator
-            command: sleep 360
+            command: sleep 120
             environment:
               TERM: dumb
      
