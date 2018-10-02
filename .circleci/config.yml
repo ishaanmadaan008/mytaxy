@@ -10,7 +10,7 @@ jobs:
 
       # specific environment version to avoid incompatible updates
 
-      - image: kelvinlawson/android-studio
+      - image: bitriseio/docker-android:v2018_09_29-05_14-b1278
 
 
 
