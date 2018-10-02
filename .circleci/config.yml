@@ -151,16 +151,6 @@ jobs:
               TERM: dumb
 
       - run:
-
-          name: Remove lock screen
-
-          command: adb shell input keyevent 82
-
-          environment:
-
-            TERM: dumb
-
-      - run:
           name: ls
           command: ls
           environment:
