@@ -50,8 +50,8 @@ jobs:
           environment:
             TERM: dumb
       - run:
-          name: ls $ANDROID_HOME/licenses 
-          command: ls $ANDROID_HOME/licenses
+          name: Android dependences
+          command: ./gradlew androidDependencies
           environment:
             TERM: dumb
             
