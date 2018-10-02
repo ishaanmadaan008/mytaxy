@@ -46,7 +46,7 @@ jobs:
 
           name: List available targets and other sdk modules
 
-          command: sdkmanager "system-images;android-24;google_apis_playstore;x86"
+          command: yes | sdkmanager "system-images;android-24;google_apis_playstore;x86"
 
           environment:
 
