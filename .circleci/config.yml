@@ -111,11 +111,6 @@ jobs:
           command: ls
           environment:
             TERM: dumb
-      - run:
-          name: accept licenses
-          command: cp -r ~/MobileAppAutomationTest/AndroidDemo/licenses/ $ANDROID_HOME/licenses
-          environment:
-            TERM: dumb
 
       - run:
 
