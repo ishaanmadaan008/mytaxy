@@ -80,7 +80,7 @@ jobs:
 
           name: Start emulator
 
-          command: /opt/android-sdk-linux/emulator/emulator -avd testEmulator -no-audio -no-window
+          command: emulator -avd testEmulator -no-audio -no-window
 
           background: true
 
