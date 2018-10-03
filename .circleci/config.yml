@@ -10,7 +10,7 @@ jobs:
 
       # specific environment version to avoid incompatible updates
 
-      - image: bitriseio/docker-android:v2018_09_29-05_14-b1278
+      - image: thyrlian/android-sdk
 
 
 
@@ -43,30 +43,30 @@ jobs:
             TERM: dumb
       
       - checkout   
+      - run:
+          name: Android dependences
+          command: ./gradlew build
+          environment:
+            TERM: dumb
       
       - run:
           name: accept licenses
           command: cp -r ~/MobileAppAutomationTest/AndroidDemo/licenses/. $ANDROID_HOME/licenses/
           environment:
             TERM: dumb
+      
       - run:
-          name: Android dependences
-          command: ./gradlew androidDependencies
+          name: accept licenses
+          command: sdkmanager 'system-images;android-25;google_apis;x86'
           environment:
             TERM: dumb
-            
-  
-      - run:
-          name: path ANDROID_SDK_ROOT
-          command: export ANDROID_SDK_ROOT=$ANDROID_HOME
-          environment:
-            TERM: dumb
+    
 
       - run:
 
           name: Create avd
 
-          command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-25;google_apis;armeabi-v7a"
+          command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-25;google_apis;x86"
 
        #   command: echo no | avdmanager create avd -n testEmulator -k "system-images;android-25;google_apis;default;armeabi-v7a"
 
