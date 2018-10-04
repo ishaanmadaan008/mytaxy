@@ -15,7 +15,12 @@ jobs:
           background: true
       - run:
           name: sleep
-          command: sleep 360    
+          command: sh ./android-wait-for-boot.sh  
       - run:
           name: Run Tests
           command: ./gradlew connectedAndroidTest
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+      - store_test_results:
+          path: app/build/test-results
