@@ -25,7 +25,7 @@ jobs:
           command: ./gradlew lint test
       - run:
           name: Run Tests
-          command: emulator -avd circleci-android25 -no-window:
+          command: emulator -avd circleci-android25 -no-window
           background: true
       - run:
           name: Run Tests
