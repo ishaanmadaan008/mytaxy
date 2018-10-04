@@ -61,13 +61,7 @@ jobs:
           environment:
             TERM: dumb
             
-      - run:
-          name: emulator 
-          command: sdkmanager “platform-tools” “platforms;android-25” “emulator”
-          environment:
-            TERM: dumb
     
-
       - run:
 
           name: Create avd
@@ -78,6 +72,12 @@ jobs:
 
           environment:
 
+            TERM: dumb
+      
+      - run:
+          name: emulator 
+          command: sdkmanager 'platform-tools' 'platforms;android-25' 'emulator'
+          environment:
             TERM: dumb
 
 
