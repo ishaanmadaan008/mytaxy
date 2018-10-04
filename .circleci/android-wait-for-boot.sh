@@ -19,7 +19,7 @@ until [[ "$bootanim" =~ "stopped" ]]; do
       exit 1
     fi
   fi
-  sleep 60
+  sleep 1
 done
-
+sleep 100
 echo "Emulator is ready"
