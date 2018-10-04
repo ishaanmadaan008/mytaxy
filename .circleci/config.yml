@@ -23,9 +23,13 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
-      - emulator -avd circleci-android25 -no-window:
-         background: true
-      - circle-android wait-for-boot
+      - run:
+          name: Run Tests
+          command: emulator -avd circleci-android25 -no-window:
+          background: true
+      - run:
+          name: Run Tests
+          command: circle-android wait-for-boot
       - run:
           name: Espresso Tests
           command: ./gradlew connectedAndroidTest
