@@ -60,6 +60,12 @@ jobs:
           command: sdkmanager 'system-images;android-25;google_apis;x86'
           environment:
             TERM: dumb
+            
+      - run:
+          name: emulator 
+          command: sdkmanager “platform-tools” “platforms;android-25” “emulator”
+          environment:
+            TERM: dumb
     
 
       - run:
@@ -80,7 +86,7 @@ jobs:
 
           name: Start emulator
 
-          command: /opt/android-sdk/tools/emulator -avd testEmulator -no-audio -no-window
+          command: emulator -avd testEmulator -no-audio -no-window
 
           background: true
 
