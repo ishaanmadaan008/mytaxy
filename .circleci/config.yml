@@ -76,7 +76,7 @@ jobs:
       
       - run:
           name: emulator 
-          command: sdkmanager 'platform-tools' 'platforms;android-25' 'emulator'
+          command: sdkmanager 'platform-tools' 'platforms;android-22' 'emulator'
           environment:
             TERM: dumb
 
@@ -86,7 +86,7 @@ jobs:
 
           name: Start emulator
 
-          command: emulator -avd testEmulator -no-audio -no-window
+          command: emulator -avd circleci-android22 -no-audio -no-window
 
           background: true
 
@@ -102,7 +102,7 @@ jobs:
 
       - run:
             name: Wait emulator
-            command: sleep 120
+            command: sleep 180
             environment:
               TERM: dumb
      
